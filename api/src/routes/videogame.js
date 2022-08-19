@@ -2,7 +2,7 @@ const { Router } = require("express");
 const videogameRouter = Router();
 const {Videogame, Genre, Op, Platform} = require('../db')
 const {default: axios} = require ("axios")
-
+const {API_KEY} = process.env
 
 videogameRouter.get('/:id', (req, res, next)=>{
     const {id} = req.params;
@@ -25,7 +25,7 @@ videogameRouter.get('/:id', (req, res, next)=>{
 
     } else {
 
-        axios.get(`https://api.rawg.io/api/games/${id}?key=49d9b2c26785422e9433d2b3fd18277f`)
+        axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
         .then(r => res.send ({
             image: r.data.background_image,
             name: r.data.name,

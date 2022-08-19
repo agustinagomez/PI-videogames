@@ -2,6 +2,7 @@ const { Router } = require("express");
 const genreRouter = Router();
 const {Videogame, Genre, Op, Platform} = require('../db')
 const {default: axios} = require ("axios")
+const {API_KEY} = process.env
 
 //https://api.rawg.io/api/genres?key=49d9b2c26785422e9433d2b3fd18277f
 genreRouter.get('/', async(req, res, next)=> {
@@ -9,7 +10,7 @@ genreRouter.get('/', async(req, res, next)=> {
     try {
         let genres = await Genre.findAll();
         if(!genres.length){
-            let apigenres = await axios.get(`https://api.rawg.io/api/genres?key=49d9b2c26785422e9433d2b3fd18277f`)
+            let apigenres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
             let genreNames = apigenres.data.results.map(g => g.name)
             console.log('GENRENAMESSS:', genreNames)
             await genreNames.map(name => {

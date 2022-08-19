@@ -2,7 +2,7 @@ const { Router } = require("express");
 const vgRouter = Router();
 const {Videogame, Genre, Op, Platform} = require('../db')
 const {default: axios} = require ("axios");
-
+const {API_KEY} = process.env
 
 let cache = [];
 
@@ -21,7 +21,7 @@ vgRouter.get('/', async(req, res, next)=>{
                 through: {attributes: []}
             }]})
 
-            const response = [...cache.slice(0, 100), ...dbVideogames]
+            const response = [...cache.slice(0, 60), ...dbVideogames]
             //SI ME PASAN UN NAME POR QUERY DEVUELVO LOS PRIMEROS 15
             if(name){
                 const filtered = response.filter(v => v.name.toLowerCase().includes(name.toLowerCase()))
@@ -46,7 +46,7 @@ vgRouter.get('/', async(req, res, next)=>{
         // let [promises, page, current] = [[], 1, ''];
         // while(page < 6){
         //     if(page === 1){
-        //         current = await axios.get(`https://api.rawg.io/api/games?key=49d9b2c26785422e9433d2b3fd18277f`);
+        //         current = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
         //         videogames = [...current.data.results];
         //     } else {
         //         current = await axios.get(current.data.next);
@@ -67,8 +67,8 @@ vgRouter.get('/', async(req, res, next)=>{
 
         // return res.send([...cache, ...dbVideogames]);
         let urls = [];
-        for(let i = 1; i < 6; i++){
-            urls.push((`https://api.rawg.io/api/games?key=49d9b2c26785422e9433d2b3fd18277f&page=${i}`))
+        for(let i = 1; i < 4; i++){
+            urls.push((`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`))
         }
    
         let promisesVg = await Promise.all(urls.map(url => axios.get(url))) //ESTO ME DEVUELVE UN ARRAY DE POMESAS
@@ -90,7 +90,7 @@ vgRouter.get('/', async(req, res, next)=>{
 })
 
 vgRouter.post('/', async(req, res, next)=>{
-    const {name, description, released, image, rating, platforms, genres} = req.body;
+    const {name, description, released, image, rating, Platforms, Genres} = req.body;
     try {
         const newGame = await Videogame.create({
             name,
@@ -100,17 +100,17 @@ vgRouter.post('/', async(req, res, next)=>{
             image
         })
         let genresDB = await Genre.findAll({where:{
-            name: {[Op.or]: genres}
+            name: {[Op.or]: Genres}
         }})
         await newGame.setGenres(genresDB);
 
         let platformsDB = await Platform.findAll({where:{
-            name: {[Op.or]: platforms}
+            name: {[Op.or]: Platforms}
         }})
         await newGame.setPlatforms(platformsDB);
         console.log(newGame)
         let response = newGame.dataValues
-        return res.send({...response, genres, platforms})
+        return res.send({...response, Genres, Platforms})
     } catch (error) {
         console.log(error)
         return res.status(400).send(error)
