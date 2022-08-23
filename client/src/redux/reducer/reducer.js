@@ -7,7 +7,10 @@ import {
     GET_PLATFORMS,
     CLEAR_STATE,
     GET_ALL_NAMES,
-    UPDATE_PAGE
+    UPDATE_PAGE,
+    SORT_ASC,
+    SORT_DESC,
+    FILTER_BY
 } from '../actions/actions.js'
 
 const initialState = {
@@ -18,11 +21,39 @@ const initialState = {
     videogameDetail: {},
     allNames: [],
     currentPage: 1,
-    perPage: 15
+    perPage: 8,
+    selectedFilters:{
+        platforms: [],
+        genres: []
+    }
 }
 
 export default function rootReducer(state = initialState, action){
     switch (action.type) {
+        case FILTER_BY:
+            return {
+                ...state,
+                currentPage: 1,
+                selectedFilters: {
+                    ...state.selectedFilters,
+                    [action.payload.filter]: [...new Set([...state.selectedFilters[action.payload.filter], action.payload.name])]
+                },
+                videogames: action.payload.filter === 'platforms'
+                ? [...state.videogames].filter(v => v.Platforms?.some(p => p.name === action.payload.name) || v.platforms?.includes(action.payload.name))
+                : [...state.videogames].filter(v => v.Genres?.some(g => g.name === action.payload.name) || v.genres?.includes(action.payload.name))
+            }
+        case SORT_ASC:
+            return {
+                ...state,
+                videogames: [...state.videogames].sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? 1 : a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 0)),
+                currentPage: 1
+            }
+        case SORT_DESC:
+            return {
+                ...state,
+                videogames: [...state.videogames].sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : a.name.toLowerCase() > b.name.toLowerCase() ? 1 : 0)),
+                currentPage: 1
+            }
         case UPDATE_PAGE:
             return {
                 ...state,
@@ -36,13 +67,16 @@ export default function rootReducer(state = initialState, action){
         case CLEAR_STATE:
             return {
                 ...state,
-                created: {}
+                created: action.payload,
+                videogameDetail: action.payload
             }
         case GET_ALL_VIDEOGAMES:
             console.log('PAYLOAD', action.payload)
             return {
                 ...state,
-                videogames: action.payload
+                videogames: action.payload,
+                selectedFilters: {platforms: [], genres: []},
+                currentPage: 1
             };
         case GET_VIDEOGAME_DETAIL:
             return {
@@ -58,7 +92,9 @@ export default function rootReducer(state = initialState, action){
         case SEARCH_VIDEOGAMES:
             return {
                 ...state,
-                videogames: action.payload
+                videogames: action.payload,
+                currentPage: 1,
+                selectedFilters: {platforms: [], genres: []}
             }
         case GET_GENRES:
             return {

@@ -12,6 +12,7 @@ function Create() {
     const genresAvailable = useSelector(state => state.genres)
     const platformsAvailable = useSelector(state => state.platforms)
     const allNames = useSelector(state => state.allNames)
+    const videogames = useSelector(state => state.videogames)
 
     useEffect(() => {
         dispatch(getGenres())
@@ -19,8 +20,13 @@ function Create() {
         dispatch(getAllNames())
     }, [])
 
+    // useEffect(()=> {
+    //     dispatch(getAllVideogames())
+        
+    // }, [created])
+
     useEffect(() => {
-        return dispatch(clearState())
+        return () => {dispatch(clearState())}
     }, []) 
     const [errors, setError] = useState({
         name: '',
@@ -51,6 +57,7 @@ function Create() {
                    ? setError({...errors, [e.target.name]: ''})
                    : setError({...errors, [e.target.name]: 'Use only letters, numbers and dashes'});
                 if(allNames.filter(v => v.toLowerCase() === e.target.value.toLowerCase()).length > 0) setError({...errors, [e.target.name]: `Videogame ${e.target.value} already exists`})
+                else if(e.target.value.length > 35) setError({...errors, [e.target.name]: `35 characters max.`})
             }
             else if(e.target.name === 'description'){
                 !e.target.value
@@ -120,8 +127,8 @@ function Create() {
             Genres: [],
             Platforms: []   
           })
-        dispatch(getAllVideogames())
         dispatch(getAllNames())
+        dispatch(getAllVideogames())
     }
 
 

@@ -5,7 +5,7 @@ import Home from '../components/Home/Home.jsx'
 import Create from '../components/Create/Create.jsx'
 import Detail from '../components/Detail/Detail.jsx'
 import Nav from "../components/Nav/Nav.jsx"
-
+import s from './App.css'
 function App() {
   return (
     <>

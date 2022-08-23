@@ -79,7 +79,8 @@ vgRouter.get('/', async(req, res, next)=>{
                 id: v.id,
                 image: v.background_image,
                 name: v.name,
-                genres: v.genres.map(g => g.name)
+                genres: v.genres.map(g => g.name),
+                platforms: v.platforms.map(p => p.platform.name)
             }
         })
         return res.send([...cache, ...dbVideogames])

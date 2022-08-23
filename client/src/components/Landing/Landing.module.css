@@ -1,0 +1,21 @@
+.landing{
+    height: 100vh;
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(0deg, rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.8) 50%,
+        rgba(0,0,0,0.3) 100%),
+        /* bottom, image */
+        url(./files/Landing_Background.gif);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.goHome{
+    height: 20vh;
+}
+.landingTitle{
+    font-family: 'NEON CLUB MUSIC', sans-serif;
+    font-size: 80px;
+}

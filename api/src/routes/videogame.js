@@ -35,7 +35,9 @@ videogameRouter.get('/:id', (req, res, next)=>{
             description: r.data.description_raw,
             released: r.data.released
         }))
-        .catch(e => res.send(e))
+        .catch(e => res.send({
+            message: "Couldn't find videogame ):"
+        }))
     } 
 })
 

@@ -15,19 +15,11 @@ function Pagination() {
             : 1)
     }, [videogames]) //el maximo de paginas disponibles depende directamente del estado de videogames
 
-    const nextPage = () => {
-        currentPage + 1 <= maxPages ? dispatch(updatePage(currentPage + 1)) : alert('Where are you trying to go?')
-    }
-
-    const prevPage = () => {
-        currentPage - 1 >= 1 ? dispatch(updatePage(currentPage - 1)) : alert('Where are you trying to go?')
-    }    
-
   return (
     <div>
-        <button disabled={currentPage - 1 < 1} onClick={prevPage}>{'<'}</button>
+        <button disabled={currentPage - 1 < 1} onClick={() => dispatch(updatePage(currentPage - 1))}>{'<'}</button>
         <b>{currentPage} of {maxPages}</b>
-        <button disabled={currentPage + 1 > maxPages} onClick={nextPage}>{'>'}</button>
+        <button disabled={currentPage + 1 > maxPages} onClick={() => dispatch(updatePage(currentPage + 1))}>{'>'}</button>
     </div>
   )
 }

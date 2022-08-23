@@ -9,6 +9,34 @@ export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const CLEAR_STATE = 'CLEAR_STATE'
 export const GET_ALL_NAMES = 'GET_ALL_NAMES'
 export const UPDATE_PAGE = 'UPDATE_PAGE'
+export const SORT_ASC = 'SORT_ASC'
+export const SORT_DESC = 'SORT_DESC'
+export const FILTER_BY = 'FILTER_BY'
+
+export const filterBy = (filter, name) => {
+    return function(dispatch){
+        dispatch({
+            type: FILTER_BY,
+            payload: {filter, name}
+        })
+    }
+}
+
+export const sortAsc = () => {
+    return function(dispatch){
+        dispatch({
+            type: SORT_ASC
+        })
+    }
+}
+
+export const sortDesc = () => {
+    return function(dispatch){
+        dispatch({
+            type: SORT_DESC
+        })
+    }
+}
 
 export const updatePage = (page) => {
     return function(dispatch){
@@ -21,7 +49,8 @@ export const updatePage = (page) => {
 
 export const clearState = () => {
     return {
-        type: CLEAR_STATE
+        type: CLEAR_STATE,
+        payload: {}
     }
 }
 export const getAllVideogames = () => {
@@ -59,7 +88,7 @@ export const getVideogameDetail = (id) => {
                 payload: r.data
             }) 
         })
-        .catch(e => {alert(e.error)})
+        .catch(e => {alert(e.message)})
     }
 }
 
