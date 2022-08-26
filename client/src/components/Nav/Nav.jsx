@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAllVideogames, getGenres, getPlatforms, sortAsc, sortDesc, filterBy, updatePage } from '../../redux/actions/actions'
-import SearchBar from './SearchBar'
-
+import { getAllVideogames, getGenres, getPlatforms, sortAsc, sortDesc, filterBy, updatePage, toggleOrigin } from '../../redux/actions/actions'
+import './Nav.css'
 
 function Nav() {
     const dispatch = useDispatch();
@@ -15,21 +14,10 @@ function Nav() {
     const genresAvailable = useSelector(state => state.genres)
     const platformsAvailable = useSelector(state => state.platforms)
     const selectedFilters = useSelector(state => state.selectedFilters)
-    // const [isOpen, setIsOpen] = useState({
-    //   genres: false,
-    //   platforms: false
-    // })
-    // const handleFilters = (e) => {
-    //   if(e.target.value !== 'all'){
-    //     dispatch(filterBy(e.target.name, e.target.value))
-    //     dispatch(updatePage(1))
-    //   }
-    // }
-    // const toggle = (type) => {
-    //   setIsOpen({...isOpen, [type]: !isOpen[type]})
-    // }
+    const dbVideogames = useSelector(state => state.dbVideogames)
+    const apiVideogames = useSelector(state => state.apiVideogames)
+
     const handleChange = (e) => {
-      // toggle(e.target.name)
       if(e.target.name && e.target.value){
         dispatch(filterBy(e.target.name, e.target.value))
         console.log(e.target.value)
@@ -38,22 +26,48 @@ function Nav() {
       }
     }
 
+    const [barsClass, setBarsClass] = useState('menu-bars unclicked')
+    const [filtersClass, setFiltersClass] = useState('menu-filters hidden')
+    const [clicked, setClicked] = useState(false)
+
+    const updateMenu = () => {
+      if(!clicked) {
+        setBarsClass('menu-bars clicked')
+        setFiltersClass('menu-filters visible')
+      } else {
+        setBarsClass('menu-bars unclicked')
+        setFiltersClass('menu-filters hidden')
+      }
+      setClicked(!clicked)
+    }
+
   return (
-    <div>
-        <SearchBar/>
-        <ul>
+    <div className='options'>
+      <nav>
+          <div onClick={updateMenu} className='filterButton'>
+            <p>Filters</p>
+          <div onClick={updateMenu} className='menubars'>
+           <div className={barsClass}>{''}</div>
+           <div className={barsClass}>{''}</div>
+           <div className={barsClass}>{''}</div>
+          </div>
+          </div>
+      </nav>
+        <div className={filtersClass}>
 
-            <li>Filters</li>
+            <ul className='filterContainer'>
+                <li className='buttons'>
+                 <button onClick={() => dispatch(getAllVideogames())}>Show All</button>
+                 <button onClick={() => dispatch(toggleOrigin('API'))}>API Videogames</button>
+                 <button onClick={() => dispatch(toggleOrigin('CREATED'))}>Created Videogames</button>
+                </li>
 
-            <ul>
-                <li><button onClick={() => dispatch(getAllVideogames())}>Show All</button></li>
-
-                <li><h4>By Genre</h4>  
-                <select multiple onChange={handleChange} name='genres'>
+                <li className='gp'><h4>By Genre</h4>  
+                <select disabled={!videogames.length} multiple onChange={handleChange} name='genres'>
                     {/* <option value="all">Select Genres</option> */}
                     {genresAvailable?.map(g => <option key={`${g}.op`} value={g}>{g}</option>)}
                   </select>
-                  <p>Selected Filters:</p>
+                  <p>Selected Filters</p>
                   <ul>
                   {selectedFilters.genres.length
                   ?  selectedFilters.genres.map(f => <li key={`${f}_38`}>{f}</li>)
@@ -61,27 +75,33 @@ function Nav() {
                   </ul>
                 </li>
 
-                <li><h4>By Platform</h4>  
-                  <select multiple onChange={handleChange} name='platforms'>
+                <li className='gp'><h4>By Platform</h4>  
+                  <select disabled={!videogames.length} multiple onChange={handleChange} name='platforms'>
                     {platformsAvailable?.map(p => <option key={`${p}.op`} value={p}>{p}</option>)}
                   </select>
-                  <p>Selected Filters:</p>
+                  <p>Selected Filters</p>
                   <ul>
                   {selectedFilters.platforms.length
                   ?  selectedFilters.platforms.map(f => <li key={`${f}_38`}>{f}</li>)
                   : <li>You haven't selected any filters</li>}
                   </ul>
                 </li>
-            </ul>
             
-            <li>Sort</li>
-            <ul>
-              <li> <button disabled={!videogames.length} onClick={() => dispatch(sortAsc())}>Z-A</button> </li>
-              <li><button disabled={!videogames.length} onClick={()=> dispatch(sortDesc())}>A-Z</button></li>
-            </ul>
+            
+            <li className='sortContainer'>
+              <h4>Sort</h4>
+              <div className='buttons sort'>
+              <button disabled={!videogames.length} onClick={() => dispatch(sortAsc())}>Z-A</button>
+              <button className='az' disabled={!videogames.length} onClick={()=> dispatch(sortDesc())}>A-Z</button>
+              </div>
+            </li>
 
-            <li><Link to='/videogames/create'>Create Videogame</Link></li>
+            <li className='clearFilters'>
+              <button disabled={!selectedFilters.genres.length && !selectedFilters.platforms.length} onClick={()=> dispatch(getAllVideogames())}>Clear Filters</button>
+            </li>
         </ul>
+         </div>
+
     </div>
   )
 }

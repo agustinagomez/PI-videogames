@@ -13,9 +13,105 @@
     justify-content: center;
 }
 .goHome{
-    height: 20vh;
+    height: 100%;
+    width: 100%;
+    border: none;
+    color: #5f8585;
+    background: #18003c;
+    border-radius: 25px;
+    box-shadow: 0 0 3vw #750065;
+    font-family: 'Neon Tubes', sans-serif;
+    overflow: hidden;
+    line-height: 50px;
+    font-size: 50px;
+    text-shadow: 0 0 2vw #3f6262;
+    font-weight:600;
+    transition: 0.2s;
+}
+.goHome:hover{
+    box-shadow: 0 0 3vw #f40ad5;
+    text-shadow: 0 0 3vw #0af4f4;
+    color: rgb(139, 255, 255);
+    cursor: pointer;
+}
+
+.linkHome{
+    text-align: center;
+    height: 190px;
+    width: 337px;
+    padding: 10px;
+    border-radius: 30px;
+    background: #2e124f;
+    box-shadow: 0 0 3vw #1c0b2f;
+    transition: 0.2s;
+}
+.linkHome:hover{
+    background: #933bff;
+    box-shadow: 0 0 5vw #933bff;
 }
 .landingTitle{
     font-family: 'NEON CLUB MUSIC', sans-serif;
-    font-size: 80px;
+    color: #fd48e5;
+    font-size: 100px;
+    line-height: 100px;
+    text-shadow: 0 0 3vw #f40ad5;
+}
+
+.landingTitle {
+    animation: landingTitle 1s ease infinite;
+    -moz-animation: landingTitle 1s ease infinite;
+    -webkit-animation: landingTitle 1s ease infinite;
+  }
+  
+  @keyframes landingTitle {
+    0%,
+    100% {
+      text-shadow: 0 0 1vw #fa16fa, 0 0 3vw #fa16fa, 0 0 10vw #fa16fa, 0 0 10vw #fa16fa, 0 0 .4vw #ac28fe, .5vw .5vw .1vw #3c1480;
+      color: #b458ff;
+    }
+    50% {
+      text-shadow: 0 0 .5vw #7e0b80, 0 0 1.5vw #7e0b80, 0 0 5vw #7e0b80, 0 0 5vw #7e0b80, 0 0 .2vw #7e0b80, .5vw .5vw .1vw #1c0a40;
+      color: #552d85;
+    }
+  }
+  .loader{
+    position: relative;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: linear-gradient(#00c8ff, #933bff, #ff00e0);
+    animation: animate 0.5s linear infinite;
+}   
+ @keyframes animate {
+      0%{transform: rotate(0deg);} 
+      100%{transform: rotate(360deg);} 
+}
+.loader span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(#00c8ff, #933bff, #ff00e0);
+}
+.loader span:nth-child(1){
+    filter: blur(5px);
+}
+.loader span:nth-child(2){
+    filter: blur(10px);
+}
+.loader span:nth-child(3){
+    filter: blur(25px);
+}
+.loader span:nth-child(4){
+    filter: blur(50px);
+}
+.loader::after{
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #18003c;
+    border-radius: 50%;
 }

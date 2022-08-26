@@ -10,7 +10,8 @@ import {
     UPDATE_PAGE,
     SORT_ASC,
     SORT_DESC,
-    FILTER_BY
+    FILTER_BY,
+    TOGGLE_ORIGIN
 } from '../actions/actions.js'
 
 const initialState = {
@@ -25,11 +26,20 @@ const initialState = {
     selectedFilters:{
         platforms: [],
         genres: []
-    }
+    },
+    dbVideogames: [],
+    apiVideogames: []
 }
 
 export default function rootReducer(state = initialState, action){
     switch (action.type) {
+        case TOGGLE_ORIGIN:
+            return{
+                ...state,
+                selectedFilters: {platforms: [], genres: []},
+                videogames: action.payload === 'API'
+                ? [...state.apiVideogames] : [...state.dbVideogames]
+            }
         case FILTER_BY:
             return {
                 ...state,
@@ -76,7 +86,9 @@ export default function rootReducer(state = initialState, action){
                 ...state,
                 videogames: action.payload,
                 selectedFilters: {platforms: [], genres: []},
-                currentPage: 1
+                currentPage: 1,
+                dbVideogames: action.payload?.filter(v => v.Platforms),
+                apiVideogames: action.payload?.filter(v => v.platforms)
             };
         case GET_VIDEOGAME_DETAIL:
             return {

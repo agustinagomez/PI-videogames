@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    align-items:flex-end;
+}
+.container button{
+    padding: 0;
+    font-weight: 300;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    color: rgba(146, 255, 255, 0.876);
+    background-color: transparent;
+    font-size: 30px;
+    border: 0px;
+    cursor: pointer;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    transition: 0.3s; 
+}
+.container button:enabled:hover{
+    color: rgb(241, 83, 255);
+    text-shadow: 0px 1px 10px rgb(238, 48, 255);
+   
+}
+.container button:enabled:active{
+    transform: scale(0.8);
+}
+.container button:disabled{
+    opacity: 50%;
+    cursor: not-allowed;
+}
+.container b{
+    margin: 0;
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    font-weight: 300;
+    transition: 0.3s;
+}
+

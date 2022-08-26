@@ -77,6 +77,7 @@ vgRouter.get('/', async(req, res, next)=>{
         cache = apiVideogames.flat().map(v => { // guardo en mi cache lo que me interesa traer
             return {
                 id: v.id,
+                rating: v.rating,
                 image: v.background_image,
                 name: v.name,
                 genres: v.genres.map(g => g.name),

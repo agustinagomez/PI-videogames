@@ -12,6 +12,16 @@ export const UPDATE_PAGE = 'UPDATE_PAGE'
 export const SORT_ASC = 'SORT_ASC'
 export const SORT_DESC = 'SORT_DESC'
 export const FILTER_BY = 'FILTER_BY'
+export const TOGGLE_ORIGIN = 'TOGGLE_ORIGIN'
+
+export const toggleOrigin = (origin) => {
+    return function(dispatch){
+        dispatch({
+            type: TOGGLE_ORIGIN,
+            payload: origin
+        })
+    }
+}
 
 export const filterBy = (filter, name) => {
     return function(dispatch){

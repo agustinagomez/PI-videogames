@@ -16,7 +16,14 @@ function Landing() {
   return (
     <div className={s.landing}>
       <h1 className={s.landingTitle}>Videogames</h1>
-      {videogames.length ? <Link to='/home'><button className={s.goHome}>Go Home</button></Link> : <h2>Loading...</h2>}
+      {videogames.length
+      ? <Link className={s.linkHome}  to='/home'><button className={s.goHome}>Go Home</button></Link>
+      : <div className={s.loader}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>}
     </div>
   )
 }

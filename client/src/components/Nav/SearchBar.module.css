@@ -1,0 +1,79 @@
+.searchContainer{
+    height: 150px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.searchTitle{
+  margin-bottom: 0px;
+    font-family: 'NEON CLUB MUSIC', sans-serif;
+    font-size: 50px;
+    color: #fd48e5;
+    line-height: 50px;
+    text-shadow: 0 0 3vw #f40ad5;
+}
+
+.searchTitle {
+    animation: searchTitle 1s ease infinite;
+    -moz-animation: searchTitle 1s ease infinite;
+    -webkit-animation: searchTitle 1s ease infinite;
+  }
+  
+  @keyframes searchTitle {
+    0%,
+    100% {
+      text-shadow: 0 0 1vw #fa16fa, 0 0 3vw #fa16fa, 0 0 10vw #fa16fa, 0 0 10vw #fa16fa, 0 0 .4vw #ac28fe, .5vw .5vw .1vw #3c1480;
+      color: #b458ff;
+    }
+    50% {
+      text-shadow: 0 0 .5vw #7e0b80, 0 0 1.5vw #7e0b80, 0 0 5vw #7e0b80, 0 0 5vw #7e0b80, 0 0 .2vw #7e0b80, .5vw .5vw .1vw #1c0a40;
+      color: #552d85;
+    }
+  }
+
+  .searchButton{
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    
+  }
+  .loupe:hover{
+    transform: scale(108%);
+    -webkit-filter: drop-shadow(3px 3px 3px rgba(0, 255, 255, 0.8));
+    filter: drop-shadow(3px 3px 3px rgba(0, 255, 255, 0.8));
+  }
+  .loupe{
+    transition: 0.3s;
+    max-height: 100%;
+    max-width: 100%;
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 255, 255, 0.6));
+    filter: drop-shadow(2px 2px 2px rgba(0, 255, 255, 0.6));
+  }
+  .searchInput{
+    font-size: 20px;
+    font-weight:20;
+    font-family: 'BTC Gaming', sans-serif;
+    background: transparent;
+    border: none;
+    color: white;
+    height: 30px;
+    width: 280px;
+    box-shadow: 0 7px 6px -7px rgb(0, 255, 255);
+    transition: 0.3s;
+  }
+  .searchInput:focus{
+    outline: none;
+    box-shadow: 0 9px 6px -7px rgb(0, 255, 255);
+  }
+  .searchInput::placeholder{
+    color: rgba(255, 255, 255, 0.14);
+  }
+  .titleContainer{
+    display: flex;
+    justify-content: space-between;
+  }
