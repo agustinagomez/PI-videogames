@@ -3,4 +3,9 @@ body{
     background-color: black;
     color: white;
     font-family: 'Objektiv Mk2 Trial', sans-serif;
+    background-image: url(./1.gif);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }

@@ -22,7 +22,16 @@ function Card({name, rating,image, genres, Genres, Platforms, id}) {
           ? Genres.map((g, i) => g.name ? <p key={i}>{g.name}</p> : <p key={i}>{g}</p>) //los de la base de datos tienen name
           : genres?.map((g, i) => <p key={i}>{g}</p>) //los de la api son genres con minuscula
         }
-        </div>
+      </div>
+        <div className={s.rating}>
+        <h4>Rating: </h4>
+        <p>{rating.toString()[0] === '1' ? '★☆☆☆☆' 
+            : rating.toString()[0] === '2' ? '★★☆☆☆'
+            : rating.toString()[0] === '3' ? '★★★☆☆'
+            : rating.toString()[0] === '4' ? '★★★★☆'
+            : '★★★★★'}</p>
+         </div>   
+        
         </div>
       </div>
     </div>

@@ -1,4 +1,55 @@
-.homeContainer{
+.container{
+    background-color: rgba(0, 0, 0, 0.7);
+    min-height: 100vh;
+}
+.head{
+    width: 100%;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.53) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.53) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 95%);
+}
+.empty{
+    height: 70vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.empty button{
+    transition: all 0.5s ease;
+    box-shadow: 1px 2px 15px 3px black;
+    -webkit-box-shadow: 1px 2px 15px 3px black;
+    -moz-box-shadow: 1px 2px 15px 3px black;
+    text-shadow: rgba(0, 255, 234, 0.359) 0px 0px 19px;
+    font-weight: 300;
+    background-color: rgb(2, 0, 13);
+    color: rgb(90, 255, 228);
+    width: 380px;
+    height: 200px;
+    border-radius: 80px;
+    font-size: 50px;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    border: 0px;
+    cursor: pointer;
+}
+.gradient{
+    box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    transition: 0.5s;
+    border-radius: 85px;
+    padding: 10px;
+    background: rgb(255, 19, 212);
+    background: linear-gradient(0deg, rgba(255,19,213,1) 0%, rgb(59, 255, 252) 100%);
+}
+
+.gradient:hover{
+    transform: scale(110%);
+}
+.gradient:hover button{
+    color: rgb(133, 255, 255);
+    text-shadow: rgba(0, 255, 234, 0.771) 0px 0px 19px;
+    box-shadow: 1px 2px 15px 3px rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 1px 2px 15px 3px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: 1px 2px 15px 3px rgba(255, 255, 255, 0.5);
 }

@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 .searchTitle{
   margin-bottom: 0px;
@@ -55,23 +56,28 @@
     filter: drop-shadow(2px 2px 2px rgba(0, 255, 255, 0.6));
   }
   .searchInput{
+    text-align: center;
+    border-radius: 10px;
     font-size: 20px;
-    font-weight:20;
-    font-family: 'BTC Gaming', sans-serif;
+    font-weight: 300;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
     background: transparent;
     border: none;
     color: white;
     height: 30px;
     width: 280px;
-    box-shadow: 0 7px 6px -7px rgb(0, 255, 255);
+    box-shadow: 0 7px 8px -7px rgb(47, 255, 255);
     transition: 0.3s;
   }
   .searchInput:focus{
     outline: none;
-    box-shadow: 0 9px 6px -7px rgb(0, 255, 255);
+    box-shadow: 0 9px 8px -7px rgb(47, 255, 255);
   }
   .searchInput::placeholder{
-    color: rgba(255, 255, 255, 0.14);
+    margin-right: 8px;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(145, 255, 253, 0.411);
   }
   .titleContainer{
     display: flex;

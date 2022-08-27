@@ -10,13 +10,14 @@ function Home() {
   const videogames = useSelector(state => state.videogames)
 
   return (
-    <>
-     <SearchBar/>
-      <div className={s.homeContainer}>
-        <Nav/>
-          {videogames.length ? <Cards/> : <button onClick={() => dispatch(getAllVideogames())}>Show All Videogames</button>}
+    <div className={s.container} onScroll>
+      <div className={s.head}>
+      <SearchBar/>
+      <Nav/>
       </div>
-    </> 
+          {videogames.length ? <Cards/> : <div className={s.empty}> <div className={s.gradient}> <button onClick={() => dispatch(getAllVideogames())}>Show All Videogames</button></div> </div>}
+
+    </div> 
    )
 }
 
