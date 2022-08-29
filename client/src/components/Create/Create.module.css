@@ -1,18 +1,360 @@
 .container{
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.337);
 }
 
 .form{
-    width: 40%;
-    height: 100vh;
+    margin-top: 20px;
+    box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 0;
+    backdrop-filter: blur(15px);
+    background-color: rgba(8, 0, 15, 0.826);
+    width: 80%;
+    height: 830px;
     display: flex;
-    flex-direction: column;
-    align-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .link{
     height: fit-content;
 }
+.gpContainer{
+    background-color: rgba(8, 0, 15, 0.883);
+    display: flex;
+    width: 100%;
+    height: 35%;
+    -webkit-box-shadow:0px 0px 7px 2px rgba(0, 255, 255);
+    -moz-box-shadow: 0px 0px 7px 2px rgba(0, 255, 255);
+    box-shadow: 0px 0px 7px 2px rgba(0, 255, 255);
+    border-radius: 30px;
+}
+.gp{
+    width: 50%;
+}
+.gp ul{
+    overflow-y: scroll;
+    max-height: 77%;
+    width: 100%;
+}
+.gp ul::-webkit-scrollbar{
+    background-color: transparent;
+}
+.gp ul::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+.gp ul::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, #00fffb 0%, #e600ff 99%);
+}
+.gp ul li{
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+.gp ul li input{
+    display: none;
+}
+.gp ul li label{
+    float:right;
+    font-size: 17px;
+    cursor: pointer;
+    display: block;
+    width: 98%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.14);
+    transition: 0.3s;
+}
+.gpContainer p{
+    float: center;
+    margin-top: 25px;
+    -webkit-animation: fadeIn 0.7s;
+    animation: fadeIn 0.7s;
+}
+.gp ul li input:checked + label{
+    user-select: none;
+    color: white;
+    text-shadow: 0px 1px 10px rgb(0, 247, 255);
+    background-color: rgb(5, 0, 32);
+}
+.gp ul li label:hover{
+    color: white;
+    text-shadow: 0px 1px 10px rgba(255,0,149);
+    background-color: rgb(5, 0, 32);
+}
+.gp h3{
+    margin-bottom: 1px;
+    padding-bottom: 8px;
+   transition: all 0.3s ease;
+}
+.gp p{
+    transition: ease-in-out 0.3s;
+    color: #ffd1ec;
+    text-shadow: 0px 3px 10px rgba(255,0,149);
+}
+.error{
+    text-shadow: 0px 2px 10px rgba(255,0,149);
+    box-shadow: 0 3px 3px -3px rgba(255, 0, 221, 0.7);
+}
+.ok{
+    text-shadow: 0px 2px 10px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 3px 3px -3px rgba(0, 255, 255);
+}
+.fieldOk{
+    width: 25%;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fieldErr{
+    width: 25%;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fieldOk input{
+    border-radius: 50%;
+    transition: 0.7s;
+    color: white;
+    background-color: transparent;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0 3px 3px -3px rgba(0, 255, 255);
+}
+.fieldOk input:focus{
+    box-shadow: 0 5px 5px -3px rgb(0, 251, 255);
+    outline: none;
+}
+.fieldOk textarea{
+    resize: none;
+    border-radius: 50%;
+    transition: 0.7s;
+    color: white;
+    background-color: transparent;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    height: 40%;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0 0px 5px 0px rgba(0, 255, 255);
+}
+.fieldOk textarea:focus{
+    box-shadow: 0 0px 10px 1px rgba(0, 255, 255);
+    outline: none;
+}
+.fieldErr textarea{
+    resize: none;
+    transition: 0.7s;
+    border-radius: 50%;
+    color: white;
+    background-color: transparent;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    height: 40%;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0 0px 5px 0px rgba(255, 0, 221);
+}
+.fieldErr textarea:focus{
+    box-shadow: 0 0px 10px 1px rgba(255, 0, 221);
+    outline: none;
+}
+.fieldOk h3{
+    transition: 0.7s;
+    text-shadow: 0px 2px 10px rgba(0, 255, 255, 0.7);
+}
+.fieldErr h3{
+    transition: 0.7s;
+    text-shadow: 0px 2px 10px rgba(255, 0, 221);
+}
+form input::placeholder{
+    color: #ffd1ec3c;
+}
+.fieldErr input{
+    transition: 0.7s;
+    border-radius: 50%;
+    color: white;
+    background-color: transparent;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    height: 50px;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0 3px 3px -3px rgb(255, 0, 221);
+}
+.fieldErr input:focus{
+    box-shadow: 0 5px 5px -3px rgb(255, 0, 221);
+    outline: none;
+}
+.fieldErr p {
+    text-shadow: 0px 3px 10px rgba(255,0,149);
+    max-width: 100%;
+    margin-bottom: 0px;
+    -webkit-animation: fadeIn 0.7s;
+    animation: fadeIn 0.7s;
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+form div textarea::-webkit-scrollbar{
+    background-color: transparent;
+}
+form div textarea::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+form div textarea::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, #00fffb 0%, #e600ff 99%);
+}
+
+.form button{
+    transition: 0.3s;
+    width: 20%;
+    height: 60px;
+    align-self: flex-end;
+    border-radius: 30px;
+    background-color: rgba(15, 0, 29, 0.883);
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    font-size: 24px;
+    text-shadow: 0px 2px 7px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0px 5px 0px rgba(255, 0, 221);
+    cursor: pointer;
+}
+.container button:enabled:hover{
+    
+    background-color: rgba(10, 0, 18, 0.826);
+    text-shadow: 0px 2px 10px rgb(0, 255, 255);
+    box-shadow: 0 0px 10px 0px rgba(255, 0, 221);
+}
+.container button:disabled{
+    opacity: 0.4;
+}
+.gohome{
+    margin-top: 15px;
+    margin-left: 15px;
+    transition: 0.5s;
+    width: 160px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgba(15, 0, 29, 0.883);
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+    font-size: 22px;
+    text-shadow: 0px 2px 7px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0px 5px 0px rgba(255, 0, 221);
+    cursor: pointer;
+
+}
+.link{
+    align-self: flex-start;
+}
+.title{
+    padding-top: 25px;
+    width: 100%;
+    margin: 0px;
+    font-family: 'NEON CLUB MUSIC', sans-serif;
+    font-size: 40px;
+    line-height: 40px;
+    text-shadow: 0 0 1vw #fa16fa, 0 0 3vw #fa16fa, 0 0 10vw #fa16fa, 0 0 10vw #fa16fa, 0 0 .4vw #ac28fe, .3vw .3vw .1vw #3c1480;
+    color: #b458ff;
+  }
+  .createdcontainer{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top:0;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.566);
+    backdrop-filter: blur(5px);
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  .modalwindow{
+    background-color: rgba(10, 0, 18, 0.97);
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow: 0 0px 10px 1px rgba(0, 255, 255);
+    -webkit-box-shadow: 0 0px 10px 1px rgba(0, 255, 255);
+    -moz-box-shadow: 0 0px 10px 1px rgba(0, 255, 255);
+    width: 60%;
+    height: 74%;
+    min-width: fit-content;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modalwindow button{
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0px 4px 1px rgba(0, 255, 255);
+    -webkit-box-shadow: 0 0px 4px 1px rgba(0, 255, 255);
+    -moz-box-shadow: 0 0px 4px 1px rgba(0, 255, 255);
+    border: none;
+    background-color: rgb(5, 0, 32);
+    color: white;
+    text-align: center;
+    align-self: center;
+    height: 50px;
+    width: 30%;
+    border-radius: 30px;
+    font-size: 25px;
+    font-family: 'Objektiv Mk2 Trial', sans-serif;
+  }
+  .modalwindow button:hover{
+    background-color: rgb(5, 0, 32);
+  }
+  .modalwindow h3{
+    font-size: 25px;
+    color: rgb(163, 255, 255);
+    text-transform: capitalize;
+    text-shadow: 0px 2px 7px rgba(0, 255, 255, 0.7);
+  }
+  .cardcontainer{
+    min-height: 600px;
+  }
+  
+

@@ -17,34 +17,38 @@ function Detail(props) {
   const videogame = useSelector(state => state.videogameDetail)
 
   return (
-    <div><Link to='/home'><button>Go Home</button></Link>
+    <div>
       {videogame.name
-     ? <div>
-        <div> 
-         <img src={videogame.image} alt="not found" />
-         <h1>{videogame.name}</h1>
-       </div>
-       <h2>{videogame.rating}</h2>
-       <p>{videogame.description}</p>
+     ? <div className={s.vgcontainer}>
+        <img className={s.image}src={videogame.image} alt="not found" />
+        <div className={s.content}>
+          <div className={s.top}>
+        <Link to='/home'><button>Go Home</button></Link>
+        <h1>{videogame.name}</h1>
+        <h2>{videogame.rating}</h2>
+          </div>
+       <div className={s.innercontent}>       
+       <p className={s.description}>{videogame.description}</p>
        <h4>Released: {videogame.released}</h4>
-      <div>
+       <div className={s.gp}>
          <h4>Genres:</h4>
          {
             props.match.params.id.includes('DB')
           ? videogame.Genres?.map((g, i) => <p key={i}>{g.name}</p>)
           : videogame.genres?.map((g, i) => <p key={i}>{g}</p>)
          }
-      </div>
-      <div>
+       </div>
+       <div className={s.gp}>
         <h4>Platforms:</h4>
         {
           props.match.params.id.includes('DB')
           ? videogame.Platforms?.map((p, i) => <p key={`${i}_PLAT`}>{p.name}</p>)
           : videogame.platforms?.map((p, i) => <p key={`${i}plat`}>{p}</p>)
         }
+       </div>
+       </div>
+       </div>
       </div>
-      
-    </div>
 
      : videogame.message //si no hay name pregunto si hay mensaje y lo muestro
       ? <h2>{videogame.message}</h2> //si no hay mensaje ni name esta cargando y muestro el gif

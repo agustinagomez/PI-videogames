@@ -1,3 +1,72 @@
 .container{
     text-align: center;
 }
+.image{
+    object-fit: cover;
+    left: 0;
+    top:0;
+    position: fixed;
+    z-index: -1;
+    min-height: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    filter: brightness(40%);
+}
+.vgcontainer{
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+.content{
+    padding: 10px;
+    justify-items:end;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    width: 55%;
+    background: rgb(8,0,14);
+    background: linear-gradient(90deg, rgba(8,0,14,1) 0%, rgba(8,0,14,0.6844547563805105) 50%, rgba(8,0,14,0) 100%);
+}
+.gp{
+    opacity: 0.70;
+    display: flex;
+    width: 100%;
+    font-size: 13px;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+.gp h4{
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+.gp p{
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+}
+.description{
+    padding: 10px;
+    font-size: 15px;
+    max-height: 50%;
+    overflow-y: scroll;
+    text-align: justify;
+}
+
+.innercontent{
+    justify-content: flex-end;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.description::-webkit-scrollbar{
+    background-color: transparent;
+}
+.description::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+.description::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, #00fffb 0%, #e600ff 99%);
+}
