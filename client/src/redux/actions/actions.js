@@ -74,7 +74,7 @@ export const clearState = () => {
 }
 export const getAllVideogames = () => {
     return function(dispatch){
-        return axios.get(`http://localhost:3001/videogames`)
+        return axios.get(`/videogames`)
         .then(r => {
             dispatch({
                 type: GET_ALL_VIDEOGAMES,
@@ -87,7 +87,7 @@ export const getAllVideogames = () => {
 
 export const getAllNames = () => {
     return function(dispatch){
-        return axios.get('http://localhost:3001/videogames')
+        return axios.get('/videogames')
         .then(r => {
             dispatch({
                 type: GET_ALL_NAMES,
@@ -100,7 +100,7 @@ export const getAllNames = () => {
 
 export const getVideogameDetail = (id) => {
     return function(dispatch){
-        return axios.get(`http://localhost:3001/videogame/${id}`)
+        return axios.get(`/videogame/${id}`)
         .then(r => {
             dispatch({
                 type: GET_VIDEOGAME_DETAIL,
@@ -114,7 +114,7 @@ export const getVideogameDetail = (id) => {
 
 export const getGenres = () => {
     return function(dispatch){
-        return axios.get(`http://localhost:3001/genres`)
+        return axios.get(`/genres`)
         .then(r => {
             dispatch({
                 type: GET_GENRES,
@@ -128,7 +128,7 @@ export const getGenres = () => {
 
 export const getPlatforms = () => {
     return function(dispatch){
-        return axios.get(`http://localhost:3001/platforms`)
+        return axios.get(`/platforms`)
         .then(r => {
             dispatch({
                 type: GET_PLATFORMS,
@@ -141,7 +141,7 @@ export const getPlatforms = () => {
 
 export const createVideogame = (body) => {
     return function(dispatch){
-        return axios.post(`http://localhost:3001/videogames`, body)
+        return axios.post(`/videogames`, body)
         .then(r => {
             dispatch({
                 type: CREATE_VIDEOGAME,
@@ -154,7 +154,7 @@ export const createVideogame = (body) => {
 
 export const searchVideogames = (name) => {
     return function(dispatch){
-        return axios.get(`http://localhost:3001/videogames?name=${name}`)
+        return axios.get(`/videogames?name=${name}`)
         .then(r => {
             dispatch({
                 type: SEARCH_VIDEOGAMES,
