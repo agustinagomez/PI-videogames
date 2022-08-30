@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import s from './Card.module.css'
+import spiderman from './spiderman.jpg'
 function Card({name, rating,image, genres, Genres, Platforms, id}) {
   
   return (
     <div className={s.card}>
       <div className={s.imgTitleContainer}>
-        <img className={s.image} src={image} alt="not found" />
+        <img className={s.image} src={name.toLowerCase() !== `marvel's spider-man` ? image : spiderman} alt="not found" />
         <b>{rating.toString().length === 1 ? `${rating}.0  ★` : `${rating}  ★`}</b>
         <div className={s.content}>
         

@@ -13,7 +13,16 @@ export const SORT_ASC = 'SORT_ASC'
 export const SORT_DESC = 'SORT_DESC'
 export const FILTER_BY = 'FILTER_BY'
 export const TOGGLE_ORIGIN = 'TOGGLE_ORIGIN'
+export const SET_RESULTS = 'SET_RESULTS'
 
+export const setResults = (name) => {
+    return function(dispatch){
+        dispatch({
+            type: SET_RESULTS,
+            payload: name
+        })
+    }
+}
 export const toggleOrigin = (origin) => {
     return function(dispatch){
         dispatch({

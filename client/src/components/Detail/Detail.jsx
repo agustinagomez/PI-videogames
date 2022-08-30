@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearState, getVideogameDetail } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import s from './Detail.module.css'
+import goback from './left-arrow.png'
+import spiderman from '../Cards/spiderman.jpg'
 
 function Detail(props) {
   const dispatch = useDispatch()
@@ -17,17 +19,28 @@ function Detail(props) {
   const videogame = useSelector(state => state.videogameDetail)
 
   return (
-    <div>
+    <div className={s.all}>
       {videogame.name
      ? <div className={s.vgcontainer}>
-        <img className={s.image}src={videogame.image} alt="not found" />
+        <img className={s.image}src={videogame.name.toLowerCase() !== `marvel's spider-man` ? videogame.image : spiderman} alt="not found" />
         <div className={s.content}>
           <div className={s.top}>
-        <Link to='/home'><button>Go Home</button></Link>
-        <h1>{videogame.name}</h1>
-        <h2>{videogame.rating}</h2>
-          </div>
-       <div className={s.innercontent}>       
+        <Link to='/home'><button><img src={goback} alt="notfound"/></button></Link>
+        </div>
+        
+       <div className={s.innercontent}>
+        <div className={s.titlecontainer}>
+       <h1>{videogame.name}</h1>
+       <div className={s.line}></div>
+       </div>
+        <div className={s.stars}>
+          <h2>{videogame.rating.toString().length === 1 ? `${videogame.rating}.0` : `${videogame.rating}`}</h2>
+          <span className={s.shadow}><div className={s.filledstar}></div></span>
+          <span className={s.shadow}><div className={videogame.rating >= 1.9 ? s.filledstar: s.emptystar}></div></span>
+          <span className={s.shadow}><div className={videogame.rating >= 2.9 ? s.filledstar: s.emptystar}></div></span>
+          <span className={s.shadow}><div className={videogame.rating >= 3.9 ? s.filledstar: s.emptystar}></div></span>
+          <span className={s.shadow}><div className={videogame.rating >= 4.9 ? s.filledstar: s.emptystar}></div></span>
+        </div>      
        <p className={s.description}>{videogame.description}</p>
        <h4>Released: {videogame.released}</h4>
        <div className={s.gp}>
@@ -51,8 +64,21 @@ function Detail(props) {
       </div>
 
      : videogame.message //si no hay name pregunto si hay mensaje y lo muestro
-      ? <h2>{videogame.message}</h2> //si no hay mensaje ni name esta cargando y muestro el gif
-      : <div className={s.container}><img src='https://i.pinimg.com/originals/f0/86/bf/f086bf3d490cddd0c739f002fd993d5c.gif'></img></div>} 
+      ? <div className={s.errorcontainer}>
+          <div className={s.modalwindow}>
+            <div className={s.windowcontent}>
+              <h2 className={s.title}>Error 404</h2>        
+            <h3>{videogame.message}</h3>
+            <Link to='/home'><button>Go Home</button></Link>
+            </div>
+          </div>
+        </div> //si no hay mensaje ni name esta cargando y muestro el gif
+      : <div className={s.loader}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>} 
     </div>
   )
 }

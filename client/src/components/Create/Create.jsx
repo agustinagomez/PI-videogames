@@ -4,6 +4,7 @@ import { createVideogame, getGenres, getPlatforms, clearState, getAllVideogames,
 import Card from '../Cards/Card'
 import s from './Create.module.css'
 import {Link} from 'react-router-dom'
+import gohome from '../Detail/left-arrow.png'
 
 function Create() {
 
@@ -13,7 +14,7 @@ function Create() {
     const platformsAvailable = useSelector(state => state.platforms)
     const allNames = useSelector(state => state.allNames)
     const videogames = useSelector(state => state.videogames)
-
+    
     useEffect(() => {
         dispatch(getGenres())
         dispatch(getPlatforms())
@@ -43,7 +44,7 @@ function Create() {
         description: '',
         released: '',
         rating: 1,
-        image: '' || 'https://cdn.wallpapersafari.com/65/85/5PsmQR.jpg',
+        image: '' || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e',
         Genres: [],
         Platforms: []
     })
@@ -122,13 +123,20 @@ function Create() {
             name: '',
             description: '',
             released: '',
-            image: '' || 'https://cdn.wallpapersafari.com/65/85/5PsmQR.jpg',
+            image: '' || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e',
             rating: 1,
             Genres: [],
             Platforms: []   
           })
         dispatch(getAllNames())
         dispatch(getAllVideogames())
+        document.getElementsByName('Platforms').forEach(element => {
+            element.checked = false;
+        });
+        document.getElementsByName('Genres').forEach(element => {
+            element.checked = false;
+        });
+        
     }
 
 
@@ -215,7 +223,7 @@ function Create() {
        </div>
      : ''
      }
-    <Link className={s.link}to='/home'><button className={s.gohome}>Go Home</button></Link>
+    <Link to='/home' className={s.gohomecont}><button><img width="30px" src={gohome} alt="notfound"/> Go home</button></Link>
     </div> 
   )
 }

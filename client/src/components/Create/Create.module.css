@@ -6,10 +6,13 @@
     align-items: center;
     justify-content: flex-end;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.337);
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 80%, rgba(0,0,0,0.9187935034802784) 100%);
 }
 
 .form{
+    -webkit-animation: fadeIn 0.7s;
+    animation: fadeIn 0.7s;
     margin-top: 20px;
     box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
     -webkit-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
@@ -246,11 +249,12 @@ form div textarea::-webkit-scrollbar-thumb{
 
 .form button{
     transition: 0.3s;
+    color: #69fffc;
     width: 20%;
     height: 60px;
     align-self: flex-end;
     border-radius: 30px;
-    background-color: rgba(15, 0, 29, 0.883);
+    background-color: rgba(25, 0, 48, 0.883);
     border: 0;
     color: white;
     font-weight: bold;
@@ -260,13 +264,13 @@ form div textarea::-webkit-scrollbar-thumb{
     box-shadow: 0 0px 5px 0px rgba(255, 0, 221);
     cursor: pointer;
 }
-.container button:enabled:hover{
-    
-    background-color: rgba(10, 0, 18, 0.826);
+.container .form button:enabled:hover{
+    color: #69fffc;
+    background-color: rgba(16, 0, 29, 0.826);
     text-shadow: 0px 2px 10px rgb(0, 255, 255);
     box-shadow: 0 0px 10px 0px rgba(255, 0, 221);
 }
-.container button:disabled{
+.container .form button:disabled{
     opacity: 0.4;
 }
 .gohome{
@@ -279,10 +283,10 @@ form div textarea::-webkit-scrollbar-thumb{
     background-color: rgba(15, 0, 29, 0.883);
     border: 0;
     color: white;
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Objektiv Mk2 Trial', sans-serif;
-    font-size: 22px;
-    text-shadow: 0px 2px 7px rgba(0, 255, 255, 0.7);
+    font-size: 20px;
+    text-shadow: 0px 2px 7px rgb(0, 255, 225);
     box-shadow: 0 0px 5px 0px rgba(255, 0, 221);
     cursor: pointer;
 
@@ -309,8 +313,8 @@ form div textarea::-webkit-scrollbar-thumb{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.566);
     backdrop-filter: blur(5px);
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
   }
   .modalwindow{
     background-color: rgba(10, 0, 18, 0.97);
@@ -348,13 +352,44 @@ form div textarea::-webkit-scrollbar-thumb{
     background-color: rgb(5, 0, 32);
   }
   .modalwindow h3{
-    font-size: 25px;
+    margin-top: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 30px;
+    font-weight: 400;
     color: rgb(163, 255, 255);
     text-transform: capitalize;
     text-shadow: 0px 2px 7px rgba(0, 255, 255, 0.7);
   }
   .cardcontainer{
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
     min-height: 600px;
   }
-  
+  .gohomecont{
+    -webkit-animation: fadeIn 0.7s;
+    animation: fadeIn 0.7s;
+    align-self: flex-start;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-left: 15px;
+    display: flex;
+  }
+  .gohomecont button{
+    transition: 0.3s;
+    opacity: 0.7;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    width: 125px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gohomecont button:hover{
+    opacity: 1;
+  }
 

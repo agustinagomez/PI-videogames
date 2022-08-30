@@ -7,11 +7,12 @@
 }
 
 .card{
-    -webkit-animation: fadeIn 0.7s;
-    animation: fadeIn 0.7s;
+    cursor: default;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
     background: rgb(255,19,213, 0.3);
     background: linear-gradient(0deg, rgba(255,19,213,0.3) 0%, rgba(128,255,253,0.3) 100%);
-    transition:all 0.5s ease;
+    transition:all 0.3s ease;
     margin-bottom: 15px;
     margin-top: 15px;
     width: 420px;
@@ -80,7 +81,7 @@ h1{
 }
 
 .genres{
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     height: 100px;
     font-size: 11px;
     display: flex;
@@ -134,7 +135,7 @@ h1{
 }
 .rating{
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 .rating p{
     margin-top: 2px;

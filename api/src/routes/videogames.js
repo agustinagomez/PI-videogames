@@ -21,7 +21,7 @@ vgRouter.get('/', async(req, res, next)=>{
                 through: {attributes: []}
             }]})
 
-            const response = [...cache.slice(0, 60), ...dbVideogames]
+            const response = [...cache.slice(0, 100), ...dbVideogames]
             //SI ME PASAN UN NAME POR QUERY DEVUELVO LOS PRIMEROS 15
             if(name){
                 const filtered = response.filter(v => v.name.toLowerCase().includes(name.toLowerCase()))
@@ -67,7 +67,7 @@ vgRouter.get('/', async(req, res, next)=>{
 
         // return res.send([...cache, ...dbVideogames]);
         let urls = [];
-        for(let i = 1; i < 4; i++){
+        for(let i = 1; i < 6; i++){
             urls.push((`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`))
         }
    

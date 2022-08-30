@@ -16,7 +16,7 @@
     align-items: center;
 }
 .empty button{
-    transition: all 0.5s ease;
+    transition: 0.3s;
     box-shadow: 1px 2px 15px 3px black;
     -webkit-box-shadow: 1px 2px 15px 3px black;
     -moz-box-shadow: 1px 2px 15px 3px black;
@@ -24,19 +24,20 @@
     font-weight: 300;
     background-color: rgb(2, 0, 13);
     color: rgb(90, 255, 228);
-    width: 380px;
-    height: 200px;
+    width: 400px;
+    height: 180px;
     border-radius: 80px;
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Objektiv Mk2 Trial', sans-serif;
     border: 0px;
     cursor: pointer;
 }
 .gradient{
+    margin-bottom: 40px;
     box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
     -webkit-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.75);
-    transition: 0.5s;
+    transition: 0.3s;
     border-radius: 85px;
     padding: 10px;
     background: rgb(255, 19, 212);
@@ -44,7 +45,10 @@
 }
 
 .gradient:hover{
-    transform: scale(110%);
+    transform: scale(105%);
+}
+.gradient button:active{
+    transform: scale(95%);
 }
 .gradient:hover button{
     color: rgb(133, 255, 255);

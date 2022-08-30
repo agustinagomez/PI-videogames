@@ -11,7 +11,8 @@ import {
     SORT_ASC,
     SORT_DESC,
     FILTER_BY,
-    TOGGLE_ORIGIN
+    TOGGLE_ORIGIN,
+    SET_RESULTS
 } from '../actions/actions.js'
 
 const initialState = {
@@ -22,20 +23,27 @@ const initialState = {
     videogameDetail: {},
     allNames: [],
     currentPage: 1,
-    perPage: 8,
+    perPage: 15,
     selectedFilters:{
         platforms: [],
         genres: []
     },
     dbVideogames: [],
-    apiVideogames: []
+    apiVideogames: [],
+    searchResults: ''
 }
 
 export default function rootReducer(state = initialState, action){
     switch (action.type) {
+        case SET_RESULTS:
+            return{
+                ...state,
+                searchResults: `Search results for "${action.payload}"`
+            }
         case TOGGLE_ORIGIN:
             return{
                 ...state,
+                searchResults: '',
                 selectedFilters: {platforms: [], genres: []},
                 videogames: action.payload === 'API'
                 ? [...state.apiVideogames] : [...state.dbVideogames]
@@ -44,6 +52,7 @@ export default function rootReducer(state = initialState, action){
             return {
                 ...state,
                 currentPage: 1,
+                searchResults: '',
                 selectedFilters: {
                     ...state.selectedFilters,
                     [action.payload.filter]: [...new Set([...state.selectedFilters[action.payload.filter], action.payload.name])]
@@ -84,6 +93,7 @@ export default function rootReducer(state = initialState, action){
             console.log('PAYLOAD', action.payload)
             return {
                 ...state,
+                searchResults: '',
                 videogames: action.payload,
                 selectedFilters: {platforms: [], genres: []},
                 currentPage: 1,

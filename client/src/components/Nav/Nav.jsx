@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { getAllVideogames, getGenres, getPlatforms, sortAsc, sortDesc, filterBy, updatePage, toggleOrigin } from '../../redux/actions/actions'
-import './Nav.css'
 
+import {getAllVideogames, getGenres, getPlatforms, sortAsc, sortDesc, filterBy, toggleOrigin } from '../../redux/actions/actions'
+import './Nav.css'
+import showall from './showall.png'
 function Nav() {
     const dispatch = useDispatch();
     const videogames = useSelector(state => state.videogames)
@@ -14,8 +14,7 @@ function Nav() {
     const genresAvailable = useSelector(state => state.genres)
     const platformsAvailable = useSelector(state => state.platforms)
     const selectedFilters = useSelector(state => state.selectedFilters)
-    const dbVideogames = useSelector(state => state.dbVideogames)
-    const apiVideogames = useSelector(state => state.apiVideogames)
+    const searchResults = useSelector(state => state.searchResults)
 
     const handleChange = (e) => {
       if(e.target.name && e.target.value){
@@ -43,6 +42,7 @@ function Nav() {
 
   return (
     <div className='options'>
+      {searchResults ? <div className='resultscont'> <h2 className='results'>{searchResults}</h2> <button onClick={() => dispatch(getAllVideogames())}> <img width="18px" src={showall} alt="notfound" /> Show all</button></div> : <h2 className='emp'></h2>}
       <nav>
           <div onClick={updateMenu} className='filterButton'>
             <p>Filters</p>
