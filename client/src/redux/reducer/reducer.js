@@ -91,7 +91,7 @@ export default function rootReducer(state = initialState, action){
                 videogameDetail: action.payload
             }
         case GET_ALL_VIDEOGAMES:
-            console.log('PAYLOAD', action.payload)
+            
             return {
                 ...state,
                 searchResults: '',

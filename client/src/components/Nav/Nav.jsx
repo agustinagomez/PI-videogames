@@ -19,9 +19,9 @@ function Nav() {
     const handleChange = (e) => {
       if(e.target.name && e.target.value){
         dispatch(filterBy(e.target.name, e.target.value))
-        console.log(e.target.value)
+
         e.target.value = ''
-        console.log(videogames)
+
       }
     }
 

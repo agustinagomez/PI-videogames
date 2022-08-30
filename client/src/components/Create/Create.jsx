@@ -144,7 +144,7 @@ function Create() {
   return (
    <div className={s.container}>
     <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
-        {console.log(data)}
+        
         <h3 className={s.title}>Create A Videogame!</h3>
         <div className={`${errors.name ? s.fieldErr : s.fieldOk} ${s.name}`}>
             <h3>* Name: </h3>
@@ -207,7 +207,7 @@ function Create() {
             {errors.image ? <p>{errors.image}</p> : ''}
         </div>
 
-        {console.log(errors)}
+        
         <button type='submit' disabled={!data.name || !data.description || !data.Platforms.length || !data.Genres.length ||Object.values(errors).some(error => error !== '')}> Create</button>
     </form>
         
