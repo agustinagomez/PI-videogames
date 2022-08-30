@@ -12,7 +12,7 @@ function Card({name, rating,image, genres, Genres, Platforms, id}) {
         <div className={s.content}>
         
         {
-          Platforms && Platforms.length
+          Platforms
           ? <Link to={`/videogame/${id}_DB`} className={s.title}><h1 >{name}</h1></Link>
           : <Link to={`/videogame/${id}`} className={s.title} ><h1 >{name}</h1></Link>
         }
