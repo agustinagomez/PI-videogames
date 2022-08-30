@@ -22,7 +22,7 @@ platformRouter.get('/', async(req, res, next)=> {
         })
         return res.send(response)
     } catch (error) {
-        console.log(error)
+        
         return res.send(error)
     }
 })

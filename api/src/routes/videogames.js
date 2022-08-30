@@ -86,7 +86,6 @@ vgRouter.get('/', async(req, res, next)=>{
         })
         return res.send([...cache, ...dbVideogames])
     } catch (error) {
-        console.log(error)
         return res.status(404).send(error)
     }
 })
@@ -110,11 +109,11 @@ vgRouter.post('/', async(req, res, next)=>{
             name: {[Op.or]: Platforms}
         }})
         await newGame.setPlatforms(platformsDB);
-        console.log(newGame)
+        
         let response = newGame.dataValues
         return res.send({...response, Genres, Platforms})
     } catch (error) {
-        console.log(error)
+       
         return res.status(400).send(error)
     }
 })

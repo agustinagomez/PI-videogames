@@ -12,7 +12,7 @@ genreRouter.get('/', async(req, res, next)=> {
         if(!genres.length){
             let apigenres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
             let genreNames = apigenres.data.results.map(g => g.name)
-            console.log('GENRENAMESSS:', genreNames)
+            
             await genreNames.map(name => {
                  Genre.create({
                     id: id++,
@@ -23,7 +23,7 @@ genreRouter.get('/', async(req, res, next)=> {
         }
         return res.send(genres.map(g => g.name))
     } catch (error) {
-        console.log(error)
+        
         return res.status(400).send(error)
     }
     // let id = 1; 
