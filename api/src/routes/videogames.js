@@ -21,7 +21,7 @@ vgRouter.get('/', async(req, res, next)=>{
                 through: {attributes: []}
             }]})
 
-            const response = [...cache.slice(0, 100), ...dbVideogames]
+            const response = [...cache.slice(0, 99), ...dbVideogames]
             //SI ME PASAN UN NAME POR QUERY DEVUELVO LOS PRIMEROS 15
             if(name){
                 const filtered = response.filter(v => v.name.toLowerCase().includes(name.toLowerCase()))
