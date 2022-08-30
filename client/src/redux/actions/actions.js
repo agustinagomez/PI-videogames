@@ -148,7 +148,7 @@ export const createVideogame = (body) => {
                 payload: r.data
             })
         })
-        .catch(e => {alert(e.error)})
+        .catch(e => {console.log(e)})
     }
 }
 

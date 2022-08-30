@@ -6,6 +6,7 @@ import s from './Create.module.css'
 import {Link} from 'react-router-dom'
 import gohome from '../Detail/left-arrow.png'
 
+
 function Create() {
 
     const dispatch = useDispatch();
@@ -14,7 +15,6 @@ function Create() {
     const platformsAvailable = useSelector(state => state.platforms)
     const allNames = useSelector(state => state.allNames)
     const videogames = useSelector(state => state.videogames)
-    
     useEffect(() => {
         dispatch(getGenres())
         dispatch(getPlatforms())
@@ -148,7 +148,7 @@ function Create() {
         <h3 className={s.title}>Create A Videogame!</h3>
         <div className={`${errors.name ? s.fieldErr : s.fieldOk} ${s.name}`}>
             <h3>* Name: </h3>
-            <input type="text" autocomplete="off" value={data.name} placeholder='Name is required' name='name' onChange={e => validate(e)} />
+            <input type="text" autoComplete='off' value={data.name} placeholder='Name is required' name='name' onChange={e => validate(e)} />
             {errors.name ? <p>{errors.name}</p> : ''}
         </div>
 
@@ -203,12 +203,12 @@ function Create() {
 
         <div className={errors.image ? s.fieldErr : s.fieldOk}>
             <h3>Image: </h3>
-            <input placeholder='URL' autocomplete="off" name='image' onChange={e => validate(e)} type="url"/>
+            <input placeholder='URL' autoComplete="off" name='image' onChange={e => validate(e)} type="url"/>
             {errors.image ? <p>{errors.image}</p> : ''}
         </div>
 
         {console.log(errors)}
-        <button type='submit' disabled={!data.name || !data.description || !data.Platforms.length || !data.Genres.length ||Object.values(errors).some(error => error !== '')}>Create</button>
+        <button type='submit' disabled={!data.name || !data.description || !data.Platforms.length || !data.Genres.length ||Object.values(errors).some(error => error !== '')}> Create</button>
     </form>
         
     {created.name

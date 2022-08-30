@@ -44,6 +44,7 @@ export default function rootReducer(state = initialState, action){
             return{
                 ...state,
                 searchResults: '',
+                currentPage: 1,
                 selectedFilters: {platforms: [], genres: []},
                 videogames: action.payload === 'API'
                 ? [...state.apiVideogames] : [...state.dbVideogames]
