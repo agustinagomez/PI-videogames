@@ -67,6 +67,7 @@
     max-height: 50%;
     overflow-y: scroll;
     text-align: left;
+    word-wrap: break-word;
 }
 
 .innercontent{

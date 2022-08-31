@@ -163,6 +163,7 @@ function Create() {
             <input type="date" name="released" placeholder='YYYY-MM-DD' value={data.released} onChange={e => validate(e)} />
             {errors.released ? <p>{errors.released}</p> : ''}
         </div>
+
         <div className={s.gpContainer}>
         <div className={s.gp}>
          <h3 className={errors.Genres ? s.error : s.ok}>* Genres: </h3>
@@ -203,7 +204,7 @@ function Create() {
 
         <div className={errors.image ? s.fieldErr : s.fieldOk}>
             <h3>Image: </h3>
-            <input placeholder='URL' autoComplete="off" name='image' onChange={e => validate(e)} type="url"/>
+            <input value={data.image} placeholder='URL' autoComplete="off" name='image' onChange={e => validate(e)} type="url"/>
             {errors.image ? <p>{errors.image}</p> : ''}
         </div>
 
