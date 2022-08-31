@@ -42,11 +42,9 @@ function Nav() {
 
   return (
     <div className='options'>
-      {!searchResults
-      ? <h2 className='emp'></h2>
-      : searchResults && !videogames.some(v => !v.name.includes(searchResults.split(' ')[1]))
-        ? <div className='resultscont'> <h2 className='results'>{searchResults}</h2> <button onClick={() => dispatch(getAllVideogames())}> <img width="18px" src={showall} alt="notfound" /> Show all</button></div>
-        : <div className='resultscont'> <h2 className='results'>Loading</h2> </div> }
+      {searchResults
+      ? <div className='resultscont'> <h2 className='results'>{searchResults}</h2> <button onClick={() => dispatch(getAllVideogames())}> <img width="18px" src={showall} alt="notfound" /> Show all</button></div>
+      : <h2 className='emp'></h2>}
       <nav>
           <div onClick={updateMenu} className='filterButton'>
             <p>Filters</p>
