@@ -271,6 +271,7 @@ form div textarea::-webkit-scrollbar-thumb{
     box-shadow: 0 0px 10px 0px rgba(255, 0, 221);
 }
 .container .form button:disabled{
+    cursor: not-allowed;
     opacity: 0.4;
 }
 .gohome{
