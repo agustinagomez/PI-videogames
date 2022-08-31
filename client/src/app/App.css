@@ -12,3 +12,12 @@ body{
 button{
     font-family: 'Objektiv Mk2 Trial', sans-serif;
 }
+::-moz-selection {
+    color: rgb(255, 255, 255);
+    background: rgb(20, 0, 34);
+  }
+  
+  ::selection {
+    color: rgb(255, 255, 255);
+    background: rgb(20, 0, 34);
+  }
