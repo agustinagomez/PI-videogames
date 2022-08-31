@@ -119,12 +119,12 @@ function Create() {
           : data.released
           ? dispatch(createVideogame({...data,
                 image: data.image || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e', 
-                rating: (data.rating * 1).toFixed(2) || 1
+                rating: data.rating < 1 ? 1 : (data.rating * 1).toFixed(2)
                 })) //rating toFixed para que llegue con decimales (4.00)
           : dispatch(createVideogame({...data, 
                 image: data.image || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e', 
                 released: null, 
-                rating: (data.rating * 1).toFixed(2) || 1
+                rating: data.rating < 1 ? 1 : (data.rating * 1).toFixed(2)
                 })) //released null para que no haya problemas
           
           setData({
