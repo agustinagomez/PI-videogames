@@ -13,7 +13,7 @@ function SearchBar() {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if(input.length < 3) return alert('Search a videogame')
+        
         dispatch(searchVideogames(input))
         dispatch(setResults(input))
         setInput('')
