@@ -44,7 +44,7 @@ function Create() {
         description: '',
         released: '',
         rating: 1,
-        image: '' || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e',
+        image: '',
         Genres: [],
         Platforms: []
     })
@@ -117,13 +117,19 @@ function Create() {
         Object.values(errors).some(error => error !== '') || !data.name || !data.description || !data.Platforms.length || !data.Genres.length 
         ? alert('Why would you do that to my button? ):< Check the information!')
           : data.released
-          ? dispatch(createVideogame({...data, rating: (data.rating * 1).toFixed(2)})) //rating toFixed para que llegue con decimales (4.00)
-          : dispatch(createVideogame({...data, released: null, rating: (data.rating * 1).toFixed(2)})) //released null para que no haya problemas
+          ? dispatch(createVideogame({...data,
+                image: data.image || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e', 
+                rating: (data.rating * 1).toFixed(2)})) //rating toFixed para que llegue con decimales (4.00)
+          : dispatch(createVideogame({...data, 
+                image: data.image || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e', 
+                released: null, 
+                rating: (data.rating * 1).toFixed(2)})) //released null para que no haya problemas
+          
           setData({
             name: '',
             description: '',
             released: '',
-            image: '' || 'https://img.freepik.com/free-photo/empty-dark-room-modern-futuristic-sci-fi-background-3d-illustration_35913-2332.jpg?w=1380&t=st=1661818004~exp=1661818604~hmac=9b6ace2e958362c67cfe7973c149fb3e6f55e1c1d4215ebe8b592f0e4903a01e',
+            image: '',
             rating: 1,
             Genres: [],
             Platforms: []   
