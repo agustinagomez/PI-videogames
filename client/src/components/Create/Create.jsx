@@ -82,7 +82,7 @@ function Create() {
             }
             else if(e.target.name === 'rating'){
                 !e.target.value
-                ? setError({...errors, [e.target.name]: ''})
+                ? setError({...errors, [e.target.name]: 'Required'})
                 : /^[+-]?([1-9]+\.?[0-9]*|\.[0-9]+)$/.test(e.target.value) && 5 >= e.target.value
                   ? setError({...errors, [e.target.name]: ''})
                   : setError({...errors, [e.target.name]: 'Rate it on a scale of 1.0 to 5.0'})
